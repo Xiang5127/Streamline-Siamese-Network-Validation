@@ -209,10 +209,13 @@ This project is deployed on Streamlit Community Cloud:
 
 [https://streamline-siamese-network-validation.streamlit.app/](https://streamline-siamese-network-validation.streamlit.app/)
 
+Streamlit deployment should use Python `3.11.x`. The project includes `runtime.txt` to specify the Python runtime version for Streamlit Community Cloud.
+
 For deployment, ensure these files are included in the repository:
 
 - `app.py`
 - `requirements.txt`
+- `runtime.txt`
 - `building_dna_extractor.tflite`
 - Any validation/demo data required by the app
 
