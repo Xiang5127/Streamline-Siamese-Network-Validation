@@ -810,7 +810,8 @@ else:
         # ── AUC (trapezoidal on ROC from sweep) ────────────────────
         tprs = 1.0 - frrs  # TPR = 1 - FRR
         sorted_idx = np.argsort(fars)
-        auc = float(np.trapz(tprs[sorted_idx], fars[sorted_idx]))
+        # Manual trapezoidal integration avoids np.trapz, which is unavailable in some deployed NumPy versions.
+        auc = float(np.sum(np.diff(fars[sorted_idx]) * (tprs[sorted_idx][1:] + tprs[sorted_idx][:-1]) / 2.0))
 
         # ── Display metrics ─────────────────────────────────────────
         st.markdown("---")
